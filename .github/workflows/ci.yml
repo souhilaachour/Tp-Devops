@@ -27,13 +27,14 @@ jobs:
           cd starter-app2
           flake8 .
 
-test:
-  runs-on: ubuntu-latest
-  needs: lint
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
 
-  strategy:
-    matrix:
-      python-version: ["3.10", "3.11", "3.12"]
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
     steps:
       - uses: actions/checkout@v4
 
