@@ -20,7 +20,7 @@ def alert_threshold():
 
 
 def sanitize_input(value):
-    return value.replace("<", "<").replace(">", ">")
+    return value.replace("<", "&lt;").replace(">", "&gt;")
 
 
 @app.route("/health")
@@ -60,4 +60,3 @@ def visits():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
-    
