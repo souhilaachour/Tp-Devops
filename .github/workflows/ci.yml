@@ -93,7 +93,7 @@ jobs:
 
       - name: Check deploy script
         run: |
-          ls -la starter-app2/deploy
+          ls -la starter-app2
 
       - name: Make deploy script executable
         run: |
