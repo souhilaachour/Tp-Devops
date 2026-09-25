@@ -90,10 +90,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Verify deploy script
+        run: |
+          ls -la starter-app2/deploy
+
       - name: Make deploy script executable
-        run: chmod +x starter-app2/deploy.sh
+        run: |
+          chmod +x starter-app2/deploy/deploy.sh
 
       - name: Run deployment
         run: |
           cd starter-app2
-          bash deploy.sh
+          bash deploy/deploy.sh
