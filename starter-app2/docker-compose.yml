@@ -1,0 +1,37 @@
+services:
+  app-blue:
+    image: souhiladek/test:latest
+    profiles:
+      - blue
+    environment:
+      REDIS_HOST: redis
+      DEPLOY_COLOR: blue
+
+  app-green:
+    image: souhiladek/test:latest
+    profiles:
+      - green
+    environment:
+      REDIS_HOST: redis
+      DEPLOY_COLOR: green
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis-data:/data
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "5000:80"
+    depends_on:
+      - redis
+
+volumes:
+  redis-data:
