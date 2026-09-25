@@ -91,9 +91,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Make deploy script executable
-        run: chmod +x starter-app2/deploy/deploy.sh
+        run: chmod +x starter-app2/deploy.sh
 
       - name: Run deployment
         run: |
           cd starter-app2
-          bash deploy/deploy.sh
+          bash deploy.sh
