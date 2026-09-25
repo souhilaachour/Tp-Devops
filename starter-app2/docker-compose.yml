@@ -1,0 +1,25 @@
+services:
+
+  redis:
+    image: redis:7-alpine
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+
+  app-blue:
+    image: souhiladek/test:latest
+    environment:
+      DEPLOY_COLOR: blue
+      REDIS_HOST: redis
+    profiles:
+      - blue
+
+  app-green:
+    image: souhiladek/test:latest
+    environment:
+      DEPLOY_COLOR: green
+      REDIS_HOST: redis
+    profiles:
+      - green
